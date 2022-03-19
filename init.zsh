@@ -7,7 +7,7 @@
 ######################################################################
 p6df::modules::perl::deps() {
   ModuleDeps=(
-    p6m7g8/p6perl
+    p6m7g8-dotfiles/p6perl
     tokuhirom/plenv
     tokuhirom/Perl-Build
   )
