@@ -38,8 +38,8 @@ p6df::modules::perl::vscodes() {
 ######################################################################
 p6df::modules::perl::home::symlink() {
 
-  mkdir -p $P6_DFZ_SRC_DIR/tokuhirom/plenv/plugins
-  ln -fs $P6_DFZ_SRC_DIR/tokuhirom/Perl-Build $P6_DFZ_SRC_DIR/tokuhirom/plenv/plugins/perl-build
+  p6_dir_mk "$P6_DFZ_SRC_DIR/tokuhirom/plenv/plugins"
+  p6_file_symlink "$P6_DFZ_SRC_DIR/tokuhirom/Perl-Build" "$P6_DFZ_SRC_DIR/tokuhirom/plenv/plugins/perl-build"
 }
 
 ######################################################################
