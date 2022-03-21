@@ -2,7 +2,6 @@
 
 ## Table of Contents
 
-
 ### p6df-perl
 - [p6df-perl](#p6df-perl)
   - [Badges](#badges)
@@ -53,8 +52,6 @@
 - p6df::modules::perl::plenv::prompt::line()
 - p6df::modules::perl::prompt::line()
 - p6df::modules::perl::vscodes()
-
-
 
 ## Author
 
