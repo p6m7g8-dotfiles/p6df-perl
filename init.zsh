@@ -40,6 +40,8 @@ p6df::modules::perl::home::symlink() {
 
   p6_dir_mk "$P6_DFZ_SRC_DIR/tokuhirom/plenv/plugins"
   p6_file_symlink "$P6_DFZ_SRC_DIR/tokuhirom/Perl-Build" "$P6_DFZ_SRC_DIR/tokuhirom/plenv/plugins/perl-build"
+
+  p6_file_symlink "$P6_DFZ_SRC_P6M7G8_DOTFILES_DIR/p6df-perl/share/.cpanm" ".cpanm"
 }
 
 ######################################################################
