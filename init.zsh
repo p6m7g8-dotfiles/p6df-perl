@@ -33,7 +33,8 @@ p6df::modules::perl::vscodes() {
 #
 # Function: p6df::modules::perl::home::symlink()
 #
-#  Environment:	 P6_DFZ_SRC_DIR
+#  Depends:	 p6_dir p6_file
+#  Environment:	 P6_DFZ_SRC_DIR P6_DFZ_SRC_P6M7G8_DOTFILES_DIR
 #>
 ######################################################################
 p6df::modules::perl::home::symlink() {
@@ -99,6 +100,22 @@ p6df::modules::perl::langs() {
 p6df::modules::perl::init() {
 
   p6df::modules::perl::plenv::init "$P6_DFZ_SRC_DIR"
+
+  p6df::modules::perl::prompt::init
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::perl::prompt::init()
+#
+#>
+######################################################################
+p6df::modules::perl::prompt::init() {
+
+  p6df::core::prompt::line::add "p6_lang_prompt_info"
+  p6df::core::prompt::line::add "p6_lang_envs_prompt_info"
+  p6df::core::prompt::lang::line::add pl
 }
 
 ######################################################################
@@ -109,6 +126,7 @@ p6df::modules::perl::init() {
 #  Args:
 #	dir -
 #
+#  Depends:	 p6_echo
 #  Environment:	 DISABLE_ENVS HAS_PLENV PLENV_ROOT
 #>
 ######################################################################
@@ -131,40 +149,18 @@ p6df::modules::perl::plenv::init() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::perl::plenv::prompt::line()
+# Function: str str = p6_pl_env_prompt_info()
 #
-#  Depends:	 p6_echo
+#  Returns:
+#	str - str
+#
 #  Environment:	 PERL5LIB PLENV_ROOT
 #>
 ######################################################################
-p6df::modules::perl::plenv::prompt::line() {
+p6_pl_env_prompt_info() {
 
-  p6_echo "plenv:\t  plenv_root=$PLENV_ROOT
-plenv:\t  perl5lib=$PERL5LIB"
-}
+  local str="plenv_root=$PLENV_ROOT
+perl5lib=$PERL5LIB"
 
-######################################################################
-#<
-#
-# Function: p6df::modules::perl::prompt::line()
-#
-#>
-######################################################################
-p6df::modules::perl::prompt::line() {
-
-  p6_perl_prompt_info
-}
-
-######################################################################
-#<
-#
-# Function: p6_perl_prompt_info()
-#
-#  Depends:	 p6_lang
-#>
-######################################################################
-p6_perl_prompt_info() {
-
-  echo -n "pl:\t  "
-  p6_lang_version "pl"
+   p6_return_str "$str"
 }
