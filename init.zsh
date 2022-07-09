@@ -141,7 +141,7 @@ p6df::modules::perl::plenv::init() {
     export PLENV_ROOT
     export HAS_PLENV=1
 
-    p6df::util::path_if $PLENV_ROOT/bin
+    p6_path_if $PLENV_ROOT/bin
     eval "$(p6_run_code plenv init - zsh)"
   fi
 }
