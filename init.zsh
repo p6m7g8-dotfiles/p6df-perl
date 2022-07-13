@@ -159,8 +159,8 @@ p6df::modules::perl::plenv::init() {
 ######################################################################
 p6_pl_env_prompt_info() {
 
-  local str="plenv_root=$PLENV_ROOT
-perl5lib=$PERL5LIB"
+  local str="plenv_root:\t  $PLENV_ROOT
+perl5lib:\t  $PERL5LIB"
 
    p6_return_str "$str"
 }
