@@ -24,6 +24,7 @@ p6df::modules::perl::vscodes() {
 
   # perl
   cpanm --force --notest Perl::LanguageServer
+
   code --install-extension richterger.perl
   code --install-extension sfodje.perltidy
 }
@@ -55,14 +56,8 @@ p6df::modules::perl::home::symlink() {
 ######################################################################
 p6df::modules::perl::langs() {
 
-  (
-    cd $P6_DFZ_SRC_DIR/tokuhirom/plenv
-    git pull
-  )
-  (
-    cd $P6_DFZ_SRC_DIR/tokuhirom/Perl-Build
-    git pull
-  )
+  p6_dir_run "$P6_DFZ_SRC_DIR/tokuhirom/plenv" p6_git_p6_pull
+  p6_dir_run "$P6_DFZ_SRC_DIR/tokuhirom/Perl-Build" p6_git_p6_pull 
 
   # nuke the old one
   local previous=$(plenv install -l | grep "5\.[0-9][02468]\." | head -2 | sed -e 's, *,,g')
