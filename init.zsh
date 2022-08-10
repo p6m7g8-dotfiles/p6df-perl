@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 ######################################################################
 #<
 #
@@ -27,6 +28,8 @@ p6df::modules::perl::vscodes() {
 
   code --install-extension richterger.perl
   code --install-extension sfodje.perltidy
+
+  p6_return_void
 }
 
 ######################################################################
@@ -34,7 +37,6 @@ p6df::modules::perl::vscodes() {
 #
 # Function: p6df::modules::perl::home::symlink()
 #
-#  Depends:	 p6_dir p6_file
 #  Environment:	 P6_DFZ_SRC_DIR P6_DFZ_SRC_P6M7G8_DOTFILES_DIR
 #>
 ######################################################################
@@ -44,6 +46,8 @@ p6df::modules::perl::home::symlink() {
   p6_file_symlink "$P6_DFZ_SRC_DIR/tokuhirom/Perl-Build" "$P6_DFZ_SRC_DIR/tokuhirom/plenv/plugins/perl-build"
 
   p6_file_symlink "$P6_DFZ_SRC_P6M7G8_DOTFILES_DIR/p6df-perl/share/.cpanm" ".cpanm"
+
+  p6_return_void
 }
 
 ######################################################################
@@ -82,6 +86,8 @@ p6df::modules::perl::langs() {
     Perl::Tidy
 
   plenv rehash
+
+  p6_return_void
 }
 
 ######################################################################
@@ -97,6 +103,8 @@ p6df::modules::perl::init() {
   p6df::modules::perl::plenv::init "$P6_DFZ_SRC_DIR"
 
   p6df::modules::perl::prompt::init
+
+  p6_return_void
 }
 
 ######################################################################
@@ -111,6 +119,8 @@ p6df::modules::perl::prompt::init() {
   p6df::core::prompt::line::add "p6_lang_prompt_info"
   p6df::core::prompt::line::add "p6_lang_envs_prompt_info"
   p6df::core::prompt::lang::line::add pl
+
+  p6_return_void
 }
 
 ######################################################################
@@ -121,24 +131,21 @@ p6df::modules::perl::prompt::init() {
 #  Args:
 #	dir -
 #
-#  Depends:	 p6_echo
-#  Environment:	 DISABLE_ENVS HAS_PLENV PLENV_ROOT
+#  Environment:	 HAS_PLENV P6_DFZ_LANGS_DISABLE PLENV_ROOT
 #>
 ######################################################################
 p6df::modules::perl::plenv::init() {
   local dir="$1"
 
-  [ -n "$DISABLE_ENVS" ] && return
-
-  PLENV_ROOT=$dir/tokuhirom/plenv
-
-  if [ -x $PLENV_ROOT/bin/plenv ]; then
-    export PLENV_ROOT
-    export HAS_PLENV=1
-
+  local PLENV_ROOT=$dir/tokuhirom/plenv
+  if p6_string_blank "$P6_DFZ_LANGS_DISABLE" && p6_file_executable "$PLENV_ROOT/bin/plenv"; then
+    p6_env_export PLENV_ROOT "$PLENV_ROOT"
+    p6_env_export HAS_PLENV 1
     p6_path_if $PLENV_ROOT/bin
-    eval "$(p6_run_code plenv init - zsh)"
+    eval "$(plenv init - zsh)"
   fi
+
+  p6_return_void
 }
 
 ######################################################################
