@@ -48,10 +48,10 @@
 - p6df::modules::perl::home::symlink()
 - p6df::modules::perl::init()
 - p6df::modules::perl::langs()
-- p6df::modules::perl::plenv::init(dir)
-- p6df::modules::perl::prompt::init()
+- p6df::modules::perl::plenv::latest()
+- p6df::modules::perl::plenv::latest::installed()
 - p6df::modules::perl::vscodes()
-- str str = p6_pl_env_prompt_info()
+- str str = p6df::modules::pl::env::prompt::info()
 
 
 

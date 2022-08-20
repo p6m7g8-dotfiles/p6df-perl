@@ -60,15 +60,15 @@ p6df::modules::perl::home::symlink() {
 ######################################################################
 p6df::modules::perl::langs() {
 
-  p6_dir_run "$P6_DFZ_SRC_DIR/tokuhirom/plenv" p6_git_p6_pull
-  p6_dir_run "$P6_DFZ_SRC_DIR/tokuhirom/Perl-Build" p6_git_p6_pull 
+  p6_run_dir "$P6_DFZ_SRC_DIR/tokuhirom/plenv" p6_git_p6_pull
+  p6_run_dir "$P6_DFZ_SRC_DIR/tokuhirom/Perl-Build" p6_git_p6_pull 
 
   # nuke the old one
-  local previous=$(plenv install -l | grep "5\.[0-9][02468]\." | head -2 | sed -e 's, *,,g')
+  local previous=$(p6df::modules::perl::plenv::latest::installed)
   plenv uninstall -f $previous
 
   # get the shiny one
-  local latest=$(plenv install -l | grep "5\.[0-9][02468]\." | head -1 | sed -e 's, *,,g')
+  local latest=$(p6df::modules::perl::plenv::latest)
   plenv install $latest
   plenv global $latest
   plenv rehash
@@ -93,6 +93,30 @@ p6df::modules::perl::langs() {
 ######################################################################
 #<
 #
+# Function: p6df::modules::perl::plenv::latest()
+#
+#>
+######################################################################
+p6df::modules::perl::plenv::latest() {
+
+  plenv install -l | p6_filter_select "5\.[0-9][02468]\." | p6_filter_first "1" | p6_filter_spaces_strip
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::perl::plenv::latest::installed()
+#
+#>
+######################################################################
+p6df::modules::perl::plenv::latest::installed() {
+
+  plenv install -l | p6_filter_select "5\.[0-9][02468]\." | p6_filter_from_end "2" | p6_filter_spaces_strip
+}
+
+######################################################################
+#<
+#
 # Function: p6df::modules::perl::init()
 #
 #  Environment:	 P6_DFZ_SRC_DIR
@@ -100,9 +124,7 @@ p6df::modules::perl::langs() {
 ######################################################################
 p6df::modules::perl::init() {
 
-  p6df::modules::perl::plenv::init "$P6_DFZ_SRC_DIR"
-
-  p6df::modules::perl::prompt::init
+  p6df::core::lang::mgr::init "$P6_DFZ_SRC_DIR/tokuhirom/plenv" "pl"
 
   p6_return_void
 }
@@ -110,48 +132,7 @@ p6df::modules::perl::init() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::perl::prompt::init()
-#
-#>
-######################################################################
-p6df::modules::perl::prompt::init() {
-
-  p6df::core::prompt::line::add "p6_lang_prompt_info"
-  p6df::core::prompt::line::add "p6_lang_envs_prompt_info"
-  p6df::core::prompt::lang::line::add pl
-
-  p6_return_void
-}
-
-######################################################################
-#<
-#
-# Function: p6df::modules::perl::plenv::init(dir)
-#
-#  Args:
-#	dir -
-#
-#  Environment:	 HAS_PLENV P6_DFZ_LANGS_DISABLE PLENV_ROOT
-#>
-######################################################################
-p6df::modules::perl::plenv::init() {
-  local dir="$1"
-
-  local PLENV_ROOT=$dir/tokuhirom/plenv
-  if p6_string_blank "$P6_DFZ_LANGS_DISABLE" && p6_file_executable "$PLENV_ROOT/bin/plenv"; then
-    p6_env_export PLENV_ROOT "$PLENV_ROOT"
-    p6_env_export HAS_PLENV 1
-    p6_path_if $PLENV_ROOT/bin
-    eval "$(plenv init - zsh)"
-  fi
-
-  p6_return_void
-}
-
-######################################################################
-#<
-#
-# Function: str str = p6_pl_env_prompt_info()
+# Function: str str = p6df::modules::pl::env::prompt::info()
 #
 #  Returns:
 #	str - str
@@ -159,7 +140,7 @@ p6df::modules::perl::plenv::init() {
 #  Environment:	 PERL5LIB PLENV_ROOT
 #>
 ######################################################################
-p6_pl_env_prompt_info() {
+p6df::modules::pl::env::prompt::info() {
 
   local str="plenv_root:\t  $PLENV_ROOT
 perl5lib:\t  $PERL5LIB"
