@@ -61,7 +61,7 @@ p6df::modules::perl::home::symlink() {
 p6df::modules::perl::langs() {
 
   p6_run_dir "$P6_DFZ_SRC_DIR/tokuhirom/plenv" p6_git_p6_pull
-  p6_run_dir "$P6_DFZ_SRC_DIR/tokuhirom/Perl-Build" p6_git_p6_pull 
+  p6_run_dir "$P6_DFZ_SRC_DIR/tokuhirom/Perl-Build" p6_git_p6_pull
 
   # nuke the old one
   local previous=$(p6df::modules::perl::plenv::latest::installed)
@@ -145,5 +145,5 @@ p6df::modules::pl::env::prompt::info() {
   local str="plenv_root:\t  $PLENV_ROOT
 perl5lib:\t  $PERL5LIB"
 
-   p6_return_str "$str"
+  p6_return_str "$str"
 }
