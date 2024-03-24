@@ -93,36 +93,20 @@ p6df::modules::perl::langs() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::perl::plenv::latest()
+# Function: p6df::modules::perl::init(_module, dir)
 #
-#>
-######################################################################
-p6df::modules::perl::plenv::latest() {
-
-  plenv install -l | p6_filter_select "5\.[0-9][02468]\." | p6_filter_first "1" | p6_filter_spaces_strip
-}
-
-######################################################################
-#<
-#
-# Function: p6df::modules::perl::plenv::latest::installed()
-#
-#>
-######################################################################
-p6df::modules::perl::plenv::latest::installed() {
-
-  plenv install -l | p6_filter_select "5\.[0-9][02468]\." | p6_filter_from_end "2" | p6_filter_spaces_strip
-}
-
-######################################################################
-#<
-#
-# Function: p6df::modules::perl::init()
+#  Args:
+#	_module -
+#	dir -
 #
 #  Environment:	 P6_DFZ_SRC_DIR
 #>
 ######################################################################
 p6df::modules::perl::init() {
+  local _module="$1"
+  local dir="$2"
+
+  p6_bootstrap "$dir"
 
   p6df::core::lang::mgr::init "$P6_DFZ_SRC_DIR/tokuhirom/plenv" "pl"
 

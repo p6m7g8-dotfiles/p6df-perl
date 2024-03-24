@@ -10,8 +10,7 @@
   - [Summary](#summary)
   - [Contributing](#contributing)
   - [Code of Conduct](#code-of-conduct)
-  - [Changes](#changes)
-    - [Usage](#usage)
+  - [Usage](#usage)
   - [Author](#author)
 
 ### Badges
@@ -34,11 +33,13 @@
 
 - [Code of Conduct](https://github.com/p6m7g8/.github/blob/master/CODE_OF_CONDUCT.md)
 
-## Changes
-
-- [Change Log](CHANGELOG.md)
-
 ## Usage
+
+
+### Aliases
+
+
+### Functions
 
 ### p6df-perl:
 
@@ -46,15 +47,28 @@
 
 - p6df::modules::perl::deps()
 - p6df::modules::perl::home::symlink()
-- p6df::modules::perl::init()
+- p6df::modules::perl::init(_module, dir)
 - p6df::modules::perl::langs()
-- p6df::modules::perl::plenv::latest()
-- p6df::modules::perl::plenv::latest::installed()
 - p6df::modules::perl::vscodes()
 - str str = p6df::modules::pl::env::prompt::info()
 
 
+### p6df-perl/lib:
 
+#### p6df-perl/lib/plenv.sh:
+
+- p6df::modules::perl::plenv::latest()
+- p6df::modules::perl::plenv::latest::installed()
+
+
+
+## Hier
+```text
+.
+└── plenv.sh
+
+1 directory, 1 file
+```
 ## Author
 
 Philip M . Gollucci <pgollucci@p6m7g8.com>
