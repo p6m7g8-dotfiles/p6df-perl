@@ -1,0 +1,24 @@
+# shellcheck shell=bash
+######################################################################
+#<
+#
+# Function: p6df::modules::perl::plenv::latest()
+#
+#>
+######################################################################
+p6df::modules::perl::plenv::latest() {
+
+  plenv install -l | p6_filter_select "5\.[0-9][02468]\." | p6_filter_first "1" | p6_filter_spaces_strip
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::perl::plenv::latest::installed()
+#
+#>
+######################################################################
+p6df::modules::perl::plenv::latest::installed() {
+
+  plenv install -l | p6_filter_select "5\.[0-9][02468]\." | p6_filter_from_end "2" | p6_filter_spaces_strip
+}
