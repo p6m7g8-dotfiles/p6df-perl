@@ -60,8 +60,8 @@ p6df::modules::perl::home::symlink() {
 ######################################################################
 p6df::modules::perl::langs() {
 
-  p6_run_dir "$P6_DFZ_SRC_DIR/tokuhirom/plenv" p6_git_p6_pull
-  p6_run_dir "$P6_DFZ_SRC_DIR/tokuhirom/Perl-Build" p6_git_p6_pull
+  p6_run_dir "$P6_DFZ_SRC_DIR/tokuhirom/plenv" p6_git_cli_pull_rebase_autostash_ff_only
+  p6_run_dir "$P6_DFZ_SRC_DIR/tokuhirom/Perl-Build" p6_git_cli_pull_rebase_autostash_ff_only
 
   # nuke the old one
   local previous=$(p6df::modules::perl::plenv::latest::installed)
