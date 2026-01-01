@@ -83,6 +83,7 @@ p6df::modules::perl::langs() {
     JSON \
     MIME::Lite \
     Text::Replace \
+    Text::CSV \
     Perl::Tidy
 
   plenv rehash
