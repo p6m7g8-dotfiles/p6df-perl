@@ -55,7 +55,7 @@ p6df::modules::perl::home::symlink() {
 #
 # Function: p6df::modules::perl::langs()
 #
-#  Environment:	 JSON LWP MIME P6_DFZ_SRC_DIR
+#  Environment:	 CSV JSON LWP MIME P6_DFZ_SRC_DIR
 #>
 ######################################################################
 p6df::modules::perl::langs() {
@@ -117,7 +117,7 @@ p6df::modules::perl::init() {
 ######################################################################
 #<
 #
-# Function: str str = p6df::modules::pl::env::prompt::info()
+# Function: str str = p6df::modules::perl::env::prompt::info()
 #
 #  Returns:
 #	str - str
@@ -125,10 +125,10 @@ p6df::modules::perl::init() {
 #  Environment:	 PERL5LIB PLENV_ROOT
 #>
 ######################################################################
-p6df::modules::pl::env::prompt::info() {
+p6df::modules::perl::env::prompt::info() {
 
-  local str="plenv_root:\t  $PLENV_ROOT
-perl5lib:\t  $PERL5LIB"
+#  local str="plenv_root:\t  $PLENV_ROOT
+  local str="perl5lib:\t  $PERL5LIB"
 
   p6_return_str "$str"
 }
