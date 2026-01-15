@@ -65,12 +65,12 @@ p6df::modules::perl::langs() {
 
   # nuke the old one
   local previous=$(p6df::modules::perl::plenv::latest::installed)
-  plenv uninstall -f $previous
+  plenv uninstall -f "$previous"
 
   # get the shiny one
   local latest=$(p6df::modules::perl::plenv::latest)
-  plenv install $latest
-  plenv global $latest
+  plenv install "$latest"
+  plenv global "$latest"
   plenv rehash
 
   plenv install-cpanm
