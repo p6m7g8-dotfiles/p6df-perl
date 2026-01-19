@@ -55,7 +55,7 @@ p6df::modules::perl::home::symlink() {
 #
 # Function: p6df::modules::perl::langs()
 #
-#  Environment:	 CSV JSON LWP MIME P6_DFZ_SRC_DIR
+#  Environment:	 P6_DFZ_SRC_DIR
 #>
 ######################################################################
 p6df::modules::perl::langs() {
@@ -136,7 +136,10 @@ p6df::modules::perl::prompt::env() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::perl::prompt::lang()
+# Function: str str = p6df::modules::perl::prompt::lang()
+#
+#  Returns:
+#	str - str
 #
 #>
 ######################################################################
