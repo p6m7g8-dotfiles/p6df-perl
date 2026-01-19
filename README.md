@@ -30,8 +30,9 @@
 - p6df::modules::perl::home::symlink()
 - p6df::modules::perl::init(_module, dir)
 - p6df::modules::perl::langs()
+- p6df::modules::perl::prompt::lang()
 - p6df::modules::perl::vscodes()
-- str str = p6df::modules::perl::env::prompt::info()
+- str str = p6df::modules::perl::prompt::env()
 
 ## p6df-perl/lib
 
