@@ -142,23 +142,11 @@ p6df::modules::perl::prompt::env() {
 ######################################################################
 p6df::modules::perl::prompt::lang() {
 
-  local ver
+  local str
+  str=$(p6df::core::lang::prompt::lang \
+    "pl" \
+    "plenv version-name 2>/dev/null" \
+    "perl -v | sed -e 's,.*(,,' -e 's,).*,,' | grep ^v5 | sed -e 's,^v,,'")
 
-  local ver_mgr
-  ver_mgr=$(plenv version-name 2>/dev/null)
-  if p6_string_eq "$ver_mgr" "system"; then
-    local ver_sys="sys@"
-    local v
-    v=$(perl -v | sed -e 's,.*(,,' -e 's,).*,,' | grep ^v5 | sed -e 's,^v,,')
-    if p6_string_blank "$v"; then
-      ver_sys="sys:no"
-    fi
-    ver="$ver_sys"
-  else
-    ver="$ver_mgr"
-  fi
-
-  local str="pl:$ver"
-
-  p6_return "$str"
+  p6_return_str "$str"
 }
