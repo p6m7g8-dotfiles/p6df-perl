@@ -149,7 +149,7 @@ p6df::modules::perl::prompt::lang() {
   str=$(p6df::core::lang::prompt::lang \
     "pl" \
     "plenv version-name 2>/dev/null" \
-    "perl -v | sed -e 's,.*(,,' -e 's,).*,,' | grep ^v5 | sed -e 's,^v,,'")
+    "perl -v | p6_filter_extract_between '(' ')' | p6_filter_row_select '^v5' | p6_filter_strip_leading_v")
 
   p6_return_str "$str"
 }
