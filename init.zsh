@@ -26,8 +26,29 @@ p6df::modules::perl::vscodes() {
   # perl
   cpanm --force --notest Perl::LanguageServer
 
-  code --install-extension richterger.perl
-  code --install-extension sfodje.perltidy
+  p6df::modules::vscode::extension::install richterger.perl
+  p6df::modules::vscode::extension::install sfodje.perltidy
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
+# Function: str json = p6df::modules::perl::vscodes::config()
+#
+#  Returns:
+#	str - json
+#
+#>
+######################################################################
+p6df::modules::perl::vscodes::config() {
+
+  cat <<'EOF'
+  "[perl]": {
+    "editor.defaultFormatter": "sfodje.perltidy"
+  }
+EOF
 
   p6_return_void
 }
