@@ -35,10 +35,7 @@ p6df::modules::perl::vscodes() {
 ######################################################################
 #<
 #
-# Function: str json = p6df::modules::perl::vscodes::config()
-#
-#  Returns:
-#	str - json
+# Function: p6df::modules::perl::vscodes::config()
 #
 #>
 ######################################################################
