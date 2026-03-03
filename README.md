@@ -39,8 +39,8 @@ TODO: Add a short summary of this module.
 - `p6df::modules::perl::home::symlink()`
 - `p6df::modules::perl::init(_module, dir)`
   - Args:
-    - _module - 
-    - dir - 
+    - _module -
+    - dir -
 - `p6df::modules::perl::langs()`
 - `p6df::modules::perl::vscodes()`
 - `p6df::modules::perl::vscodes::config()`
