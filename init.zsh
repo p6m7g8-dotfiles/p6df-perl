@@ -146,7 +146,12 @@ p6df::modules::perl::init() {
 p6df::modules::perl::prompt::env() {
 
 #  local str="plenv_root:\t  $PLENV_ROOT
-  local str="perl5lib:\t  $PERL5LIB"
+#  local str="perl5lib:\t  $PERL5LIB"
+  local str=""
+  case "$PERL5LIB" in
+    "$P6_DFZ_SRC_P6M7G8_DOTFILES_DIR/p6perl/lib/perl5") str="" ;;
+    *) str="perl5lib:\t  $PERL5LIB" ;;
+  esac
 
   p6_return_str "$str"
 }
