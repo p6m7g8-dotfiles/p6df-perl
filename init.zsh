@@ -53,12 +53,12 @@ EOF
 ######################################################################
 #<
 #
-# Function: p6df::modules::perl::home::symlink()
+# Function: p6df::modules::perl::home::symlinks()
 #
 #  Environment:	 P6_DFZ_SRC_DIR P6_DFZ_SRC_P6M7G8_DOTFILES_DIR
 #>
 ######################################################################
-p6df::modules::perl::home::symlink() {
+p6df::modules::perl::home::symlinks() {
 
   p6_dir_mk "$P6_DFZ_SRC_DIR/tokuhirom/plenv/plugins"
   p6_file_symlink "$P6_DFZ_SRC_DIR/tokuhirom/Perl-Build" "$P6_DFZ_SRC_DIR/tokuhirom/plenv/plugins/perl-build"
