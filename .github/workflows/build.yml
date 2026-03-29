@@ -2,9 +2,7 @@ name: Build
 
 on:
   pull_request: {}
-  push:
-    branches:
-      - gh-readonly-queue/**
+  push: {}
   merge_group: {}
   workflow_dispatch: {}
 
@@ -16,3 +14,4 @@ jobs:
         uses: p6m7g8-actions/p6df-build@main
         with:
           gh_token: ${{ secrets.GITHUB_TOKEN }}
+          shellcheck: false
