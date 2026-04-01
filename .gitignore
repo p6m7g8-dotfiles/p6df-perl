@@ -1,2 +1,7 @@
 share/.cpanm/build.log
 share/.cpanm/latest-build
+share/.cpanm/work/
+
+share/.cpan/build/
+share/.cpan/sources/
+share/.cpan/Metadata

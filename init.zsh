@@ -55,7 +55,7 @@ EOF
 #
 # Function: p6df::modules::perl::home::symlinks()
 #
-#  Environment:	 P6_DFZ_SRC_DIR P6_DFZ_SRC_P6M7G8_DOTFILES_DIR
+#  Environment:	 HOME P6_DFZ_SRC_DIR P6_DFZ_SRC_P6M7G8_DOTFILES_DIR
 #>
 ######################################################################
 p6df::modules::perl::home::symlinks() {
@@ -113,48 +113,16 @@ p6df::modules::perl::langs() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::perl::init(_module, dir)
-#
-#  Args:
-#	_module -
-#	dir -
+# Function: p6df::modules::perl::langmgr::init()
 #
 #  Environment:	 P6_DFZ_SRC_DIR
 #>
 ######################################################################
-p6df::modules::perl::init() {
-  local _module="$1"
-  local dir="$2"
-
-  p6_bootstrap "$dir"
+p6df::modules::perl::langmgr::init() {
 
   p6df::core::lang::mgr::init "$P6_DFZ_SRC_DIR/tokuhirom/plenv" "pl"
 
   p6_return_void
-}
-
-######################################################################
-#<
-#
-# Function: str str = p6df::modules::perl::prompt::env()
-#
-#  Returns:
-#	str - str
-#
-#  Environment:	 PERL5LIB
-#>
-######################################################################
-p6df::modules::perl::prompt::env() {
-
-#  local str="plenv_root:\t  $PLENV_ROOT
-#  local str="perl5lib:\t  $PERL5LIB"
-  local str=""
-  case "$PERL5LIB" in
-    "$P6_DFZ_SRC_P6M7G8_DOTFILES_DIR/p6perl/lib/perl5") str="" ;;
-    *) str="perl5lib:\t  $PERL5LIB" ;;
-  esac
-
-  p6_return_str "$str"
 }
 
 ######################################################################
@@ -176,4 +144,20 @@ p6df::modules::perl::prompt::lang() {
     "perl -v | p6_filter_extract_between '(' ')' | p6_filter_row_select '^v5' | p6_filter_strip_leading_v")
 
   p6_return_str "$str"
+}
+
+######################################################################
+#<
+#
+# Function: words perl $PERL5LIB = p6df::modules::perl::prompt::env()
+#
+#  Returns:
+#	words - perl $PERL5LIB
+#
+#  Environment:	 PERL5LIB
+#>
+######################################################################
+p6df::modules::perl::prompt::env() {
+
+  p6_return_words 'perl' "$"
 }
