@@ -159,5 +159,5 @@ p6df::modules::perl::prompt::lang() {
 ######################################################################
 p6df::modules::perl::prompt::env() {
 
-  p6_return_words 'perl' '$PERL5LIB'
+  p6_return_words 'perl' "$"
 }
