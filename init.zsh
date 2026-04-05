@@ -1,5 +1,11 @@
 # shellcheck shell=bash
 ######################################################################
+#<
+#
+# Function: p6df::modules::perl::deps()
+#
+#>
+######################################################################
 p6df::modules::perl::deps() {
   ModuleDeps=(
     p6m7g8-dotfiles/p6perl
@@ -9,6 +15,13 @@ p6df::modules::perl::deps() {
 }
 
 ######################################################################
+#<
+#
+# Function: p6df::modules::perl::langmgr::init()
+#
+#  Environment:	 P6_DFZ_SRC_DIR
+#>
+######################################################################
 p6df::modules::perl::langmgr::init() {
 
   p6df::core::lang::mgr::init "$P6_DFZ_SRC_DIR/tokuhirom/plenv" "pl"
@@ -16,6 +29,13 @@ p6df::modules::perl::langmgr::init() {
   p6_return_void
 }
 
+######################################################################
+#<
+#
+# Function: p6df::modules::perl::home::symlinks()
+#
+#  Environment:	 HOME P6_DFZ_SRC_DIR P6_DFZ_SRC_P6M7G8_DOTFILES_DIR
+#>
 ######################################################################
 p6df::modules::perl::home::symlinks() {
 
@@ -28,6 +48,13 @@ p6df::modules::perl::home::symlinks() {
   p6_return_void
 }
 
+######################################################################
+#<
+#
+# Function: p6df::modules::perl::langs()
+#
+#  Environment:	 P6_DFZ_SRC_DIR
+#>
 ######################################################################
 p6df::modules::perl::langs() {
 
@@ -63,6 +90,12 @@ p6df::modules::perl::langs() {
 }
 
 ######################################################################
+#<
+#
+# Function: p6df::modules::perl::vscodes()
+#
+#>
+######################################################################
 p6df::modules::perl::vscodes() {
 
   # perl
@@ -75,6 +108,12 @@ p6df::modules::perl::vscodes() {
 }
 
 ######################################################################
+#<
+#
+# Function: p6df::modules::perl::vscodes::config()
+#
+#>
+######################################################################
 p6df::modules::perl::vscodes::config() {
 
   cat <<'EOF'
@@ -86,45 +125,6 @@ EOF
   p6_return_void
 }
 
-######################################################################
-#<
-#
-# Function: p6df::modules::perl::deps()
-#
-#>
-######################################################################
-#<
-#
-# Function: p6df::modules::perl::vscodes()
-#
-#>
-######################################################################
-#<
-#
-# Function: p6df::modules::perl::vscodes::config()
-#
-#>
-######################################################################
-#<
-#
-# Function: p6df::modules::perl::home::symlinks()
-#
-#  Environment:	 HOME P6_DFZ_SRC_DIR P6_DFZ_SRC_P6M7G8_DOTFILES_DIR
-#>
-######################################################################
-#<
-#
-# Function: p6df::modules::perl::langs()
-#
-#  Environment:	 P6_DFZ_SRC_DIR
-#>
-######################################################################
-#<
-#
-# Function: p6df::modules::perl::langmgr::init()
-#
-#  Environment:	 P6_DFZ_SRC_DIR
-#>
 ######################################################################
 #<
 #
@@ -159,5 +159,5 @@ p6df::modules::perl::prompt::lang() {
 ######################################################################
 p6df::modules::perl::prompt::env() {
 
-  p6_return_words 'perl' '$PLENV_ROOT' '$PERL5LIB'
+  p6_return_words 'perl' '$PERL5LIB'
 }
