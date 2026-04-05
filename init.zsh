@@ -149,10 +149,10 @@ p6df::modules::perl::prompt::lang() {
 ######################################################################
 #<
 #
-# Function: words perl $PERL5LIB = p6df::modules::perl::prompt::env()
+# Function: words perl = p6df::modules::perl::prompt::env()
 #
 #  Returns:
-#	words - perl $PERL5LIB
+#	words - perl
 #
 #  Environment:	 PERL5LIB
 #>
