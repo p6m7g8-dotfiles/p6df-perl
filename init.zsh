@@ -17,35 +17,14 @@ p6df::modules::perl::deps() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::perl::vscodes()
+# Function: p6df::modules::perl::langmgr::init()
 #
+#  Environment:	 P6_DFZ_SRC_DIR
 #>
 ######################################################################
-p6df::modules::perl::vscodes() {
+p6df::modules::perl::langmgr::init() {
 
-  # perl
-  cpanm --force --notest Perl::LanguageServer
-
-  p6df::modules::vscode::extension::install richterger.perl
-  p6df::modules::vscode::extension::install sfodje.perltidy
-
-  p6_return_void
-}
-
-######################################################################
-#<
-#
-# Function: p6df::modules::perl::vscodes::config()
-#
-#>
-######################################################################
-p6df::modules::perl::vscodes::config() {
-
-  cat <<'EOF'
-  "[perl]": {
-    "editor.defaultFormatter": "sfodje.perltidy"
-  }
-EOF
+  p6df::core::lang::mgr::init "$P6_DFZ_SRC_DIR/tokuhirom/plenv" "pl"
 
   p6_return_void
 }
@@ -113,14 +92,35 @@ p6df::modules::perl::langs() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::perl::langmgr::init()
+# Function: p6df::modules::perl::vscodes()
 #
-#  Environment:	 P6_DFZ_SRC_DIR
 #>
 ######################################################################
-p6df::modules::perl::langmgr::init() {
+p6df::modules::perl::vscodes() {
 
-  p6df::core::lang::mgr::init "$P6_DFZ_SRC_DIR/tokuhirom/plenv" "pl"
+  # perl
+  cpanm --force --notest Perl::LanguageServer
+
+  p6df::modules::vscode::extension::install richterger.perl
+  p6df::modules::vscode::extension::install sfodje.perltidy
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::perl::vscodes::config()
+#
+#>
+######################################################################
+p6df::modules::perl::vscodes::config() {
+
+  cat <<'EOF'
+  "[perl]": {
+    "editor.defaultFormatter": "sfodje.perltidy"
+  }
+EOF
 
   p6_return_void
 }
