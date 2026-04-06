@@ -36,16 +36,13 @@ TODO: Add a short summary of this module.
 ##### p6df-perl/init.zsh
 
 - `p6df::modules::perl::deps()`
-- `p6df::modules::perl::home::symlink()`
-- `p6df::modules::perl::init(_module, dir)`
-  - Args:
-    - _module -
-    - dir -
+- `p6df::modules::perl::home::symlinks()`
+- `p6df::modules::perl::langmgr::init()`
 - `p6df::modules::perl::langs()`
 - `p6df::modules::perl::vscodes()`
 - `p6df::modules::perl::vscodes::config()`
-- `str str = p6df::modules::perl::prompt::env()`
 - `str str = p6df::modules::perl::prompt::lang()`
+- `words perl = p6df::modules::perl::prompt::env()`
 
 #### p6df-perl/lib
 
